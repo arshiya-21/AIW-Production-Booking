@@ -170,7 +170,9 @@ _jsessionid = None
 
 def login():
     global _logged_in, _jsessionid
-    response = session.post(LOGIN_URL, data={"j_username": USERNAME, "j_password": PASSWORD})
+    response = session.post(
+        LOGIN_URL, data={"j_username": USERNAME, "j_password": PASSWORD}, timeout=30
+    )
     _jsessionid = session.cookies.get("JSESSIONID")
     _logged_in = response.status_code == 200 and bool(_jsessionid)
     if _logged_in:
@@ -204,7 +206,7 @@ def send_data_to_api(records):
             # requests' automatic cookie jar can silently drop it otherwise.
             "Cookie": f"JSESSIONID={_jsessionid}",
         }
-        return session.post(API_URL, json=records, headers=headers)
+        return session.post(API_URL, json=records, headers=headers, timeout=30)
 
     response = _post_once()
 
