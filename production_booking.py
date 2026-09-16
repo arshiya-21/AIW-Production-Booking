@@ -199,7 +199,9 @@ def send_data_to_api(records):
         print("Nothing to send.")
         return
 
-    print("JSON payload being sent:\n", json.dumps(records, indent=4))
+    # Compact, single-line dump — indent=4 turned this into hundreds of lines per
+    # cycle, which under unbuffered stdout tripped Railway's per-second log rate limit.
+    print(f"JSON payload being sent ({len(records)} record(s)): {json.dumps(records)}")
 
     if not _logged_in and not login():
         return
