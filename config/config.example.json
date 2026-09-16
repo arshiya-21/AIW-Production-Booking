@@ -1,0 +1,39 @@
+{
+    "database": {
+        "host": "sandman.cjmg6ek4cf9c.ap-south-1.rds.amazonaws.com",
+        "port": "43306",
+        "user": "aiw_scada",
+        "password": "",
+        "database_name": "aiw_data"
+    },
+    "ssh_tunnel": {
+        "ssh_host": "3.7.49.62",
+        "ssh_port": 30022,
+        "ssh_username": "rds-tunnel",
+        "ssh_private_key_path": ""
+    },
+    "sql_file_path": "query.sql",
+    "data_frequency": 1800,
+    "foundry_line_id": 1,
+    "api_url": "https://sandman.co.in/upload/save_consumption_bookings",
+    "login_url": "https://sandman.co.in/j_spring_security_check",
+    "j_username": "AIW",
+    "j_password": "",
+    "columns_required": [
+        "date",
+        "shift",
+        "startTime",
+        "endTime",
+        "componentId",
+        "totalMould",
+        "unpouredMould",
+        "noOfBoxesPoured",
+        "foundryLineId",
+        "badBatches",
+        "noOfBatches",
+        "bentoniteSetPoint",
+        "newSandSetPoint",
+        "coalDustSetPoint",
+        "waterSetPoint"
+    ]
+}
