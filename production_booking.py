@@ -86,6 +86,11 @@ engine = create_engine(
     f"mysql+pymysql://{quote_plus(db_config['user'])}:{quote_plus(db_config['password'])}"
     f"@127.0.0.1:{tunnel.local_bind_port}/{db_config['database_name']}",
     execution_options={"stream_results": True},
+    # Cycles are 30 min apart — a pooled connection idle that long can go stale (dropped
+    # by the server or the SSH tunnel) and fail with "Lost connection during query" the
+    # next time it's reused. pre_ping tests it with a cheap SELECT 1 first and silently
+    # reopens it if dead, instead of handing back a dead connection to the real query.
+    pool_pre_ping=True,
 )
 
 
