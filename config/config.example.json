@@ -13,7 +13,7 @@
         "ssh_private_key_path": ""
     },
     "sql_file_path": "query.sql",
-    "data_frequency": 1800,
+    "data_frequency": 900,
     "foundry_line_id": 1,
     "api_url": "https://sandman.co.in/upload/save_consumption_bookings",
     "login_url": "https://sandman.co.in/j_spring_security_check",
