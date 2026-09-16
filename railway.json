@@ -4,7 +4,7 @@
         "builder": "NIXPACKS"
     },
     "deploy": {
-        "startCommand": "python production_booking.py",
+        "startCommand": "python -u production_booking.py",
         "restartPolicyType": "ON_FAILURE"
     }
 }
