@@ -78,6 +78,7 @@ tunnel = SSHTunnelForwarder(
     ssh_pkey=ssh_config["ssh_private_key_path"],
     ssh_private_key_password=ssh_config.get("ssh_private_key_password") or None,
     remote_bind_address=(db_config["host"], int(db_config["port"])),
+    set_keepalive=30,
 )
 tunnel.start()
 atexit.register(tunnel.stop)
